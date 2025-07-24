@@ -1,22 +1,28 @@
-var express = require('express');
+const express = require('express');
 const fs = require("fs");
-var router = express.Router();
-const postDBFileName = "./model/postDB.json";
+const router = express.Router();
+const postDBFileName = "./model/questions.json";
 
 
 router.get('/', function(req, res, next) {
-  
-  if(req.cookies.loggin === "true") res.redirect('/feed');
-  res.render('./auth/index');
+  res.render('/views/main/selection');
 });
 
-router.get('/feed', function(req, res, next) {
-  if(req.cookies.loggin === "false") res.redirect("/");
-  let posts = readPostDB();
-  res.render('./main/feed', {posts: posts.posts});
+router.get('/quiz', function(req, res, next) {
+  let posts = readQuizDB();
+  res.render('./views/main/compose', {posts: posts.posts});
 });
 
-function readPostDB() {
+
+router.get('/quiz/setup', (req, res) => {
+    res.render('setup', { totalQuestions: quiz.questions.length });
+});
+
+router.post('/quiz/setup', (req, res) => {
+    const num = parseInt(req.body.numQuestions, 10);
+});
+
+function readQuizDB() {
     let data = fs.readFileSync(postDBFileName, "utf-8");
     return JSON.parse(data);
 }
