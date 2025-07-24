@@ -1,0 +1,49 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# environment variables
+.env
+
+# logs
+npm-debug.log*
+
+# runtime data
+pids
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional TypeScript cache
+*.tsbuildinfo
+
+# Yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Express session files (if you’re using file-based sessions)
+sessions/
+
+# Generated documentation
+docs/
+
+# Temporary files
+tmp/
+temp/
+
