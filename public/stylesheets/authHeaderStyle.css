@@ -1,0 +1,29 @@
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2% 15%;
+    font-size: 30px;
+}
+
+nav a {
+    padding: 0px 7px;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:nth-child(2) {
+    margin-left: 10px;
+    border: 1px black solid;
+    padding: 0px 7px;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+
+nav a:hover {
+    text-decoration: underline;
+}

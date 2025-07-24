@@ -1,0 +1,21 @@
+
+
+body {
+    background: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: wheat;
+}
+
+.home-div{
+    font-size: 45px;
+    text-align: center;
+    line-height: 60px;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

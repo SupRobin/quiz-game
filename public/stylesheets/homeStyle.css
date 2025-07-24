@@ -1,0 +1,46 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  
+}
+
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2% 15%;
+  font-size: 25px;
+}
+
+nav a {
+  padding: 0px 7px;
+  color: black;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  width: 400px;
+  justify-content: space-between;
+}
+
+#dropdownMenuButton {
+  background-color: white;
+  color: black;
+  border: none;
+  font-size: 25px;
+}
+
+.home-div {
+  padding: 2% 20%;
+}
