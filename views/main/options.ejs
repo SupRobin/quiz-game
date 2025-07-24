@@ -1,0 +1,28 @@
+<%- include('header') %>
+
+<div class="container py-5">
+    <h1 class="mb-4 text-center">Quiz Setup</h1>
+    <form action="/quiz/setup" method="POST" class="mx-auto" style="max-width: 400px;">
+        <div class="mb-3">
+            <label for="numQuestions" class="form-label">
+                How many questions would you like to be asked?
+            </label>
+            <input
+                    type="number"
+                    class="form-control"
+                    id="numQuestions"
+                    name="numQuestions"
+                    min="1"
+                    max="<%= totalQuestions %>"
+                    value="5"
+                    required
+            >
+            <div class="form-text">
+                Choose between 1 and <%= totalQuestions %> questions.
+            </div>
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Start Quiz</button>
+        </div>
+    </form>
+</div>
