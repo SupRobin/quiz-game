@@ -5,7 +5,7 @@ const postDBFileName = "./model/questions.json";
 
 
 router.get('/', function(req, res, next) {
-  res.render('./main/quiz');
+  res.render('./main/quiz-setup');
 });
 
 router.get('/quiz', function(req, res, next) {
