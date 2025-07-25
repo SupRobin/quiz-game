@@ -5,17 +5,22 @@ const postDBFileName = "./model/questions.json";
 
 
 router.get('/', function(req, res, next) {
-  res.render('/views/main/selection');
+  res.render('./main/quiz');
 });
 
 router.get('/quiz', function(req, res, next) {
-  let posts = readQuizDB();
-  res.render('./views/main/compose', {posts: posts.posts});
+  let quiz = readQuizDB();
+  res.render('./main/quiz', {quiz: quiz});
 });
+
+router.get('/quiz/submit' , function(req, res, next) {
+    res.send("Submitting...");
+})
 
 
 router.get('/quiz/setup', (req, res) => {
-    res.render('setup', { totalQuestions: quiz.questions.length });
+    const quiz = readQuizDB();
+    res.render('setup', { totalQuestions: quiz.question.length });
 });
 
 router.post('/quiz/setup', (req, res) => {
