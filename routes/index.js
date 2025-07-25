@@ -13,7 +13,7 @@ router.get('/quiz', function(req, res, next) {
   res.render('./main/quiz', {quiz: quiz});
 });
 
-router.get('/quiz/submit' , function(req, res, next) {
+router.post('/quiz/submit' , function(req, res) {
     res.send("Submitting...");
 })
 
@@ -23,9 +23,6 @@ router.get('/quiz/setup', (req, res) => {
     res.render('setup', { totalQuestions: quiz.question.length });
 });
 
-router.post('/quiz/setup', (req, res) => {
-    const num = parseInt(req.body.numQuestions, 10);
-});
 
 function readQuizDB() {
     let data = fs.readFileSync(postDBFileName, "utf-8");
