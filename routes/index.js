@@ -17,6 +17,13 @@ router.post('/quiz/submit' , function(req, res) {
     res.send("Submitting...");
 })
 
+router.get('/quizgame', (req, res) => {
+    res.render('main/quizgame', {
+        question: 'What is the capital of France?',
+        answers: ['Paris', 'Berlin', 'Madrid', 'Rome']
+    });
+});
+
 function readQuizDB() {
     let data = fs.readFileSync(postDBFileName, "utf-8");
     return JSON.parse(data);
