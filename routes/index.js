@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require("fs");
 const router = express.Router();
 const postDBFileName = "./model/questions.json";
+const { getQuestions } = require('../model/quizQuestions');
 
 
 router.get('/', function(req, res, next) {
@@ -18,9 +19,9 @@ router.post('/quiz/submit' , function(req, res) {
 })
 
 router.get('/quizgame', (req, res) => {
+    const questions = getQuestions();
     res.render('main/quizgame', {
-        question: 'What is the capital of France?',
-        answers: ['Paris', 'Berlin', 'Madrid', 'Rome']
+        questions
     });
 });
 
