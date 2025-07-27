@@ -20,6 +20,3 @@ jobs:
 
       - name: Install dependencies (optional)
         run: npm ci
-
-      - name: run
-        run: nodemon start
