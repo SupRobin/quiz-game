@@ -2,15 +2,10 @@ const express = require('express');
 const fs = require("fs");
 const router = express.Router();
 const postDBFileName = "./model/questions.json";
+const { getQuestions } = require('../model/quizQuestions');
 
-
-router.get('/', function(req, res, next) {
-  res.render('./main/quiz-setup');
-});
-
-router.get('/quiz', function(req, res, next) {
-  let quiz = readQuizDB();
-  res.render('./main/quiz', {quiz: quiz});
+router.get('/', (req, res) => {
+    res.render('main/index');
 });
 
 router.post('/quiz/submit' , function(req, res) {
@@ -18,15 +13,8 @@ router.post('/quiz/submit' , function(req, res) {
 })
 
 router.get('/quizgame', (req, res) => {
-    res.render('main/quizgame', {
-        question: 'What is the capital of France?',
-        answers: ['Paris', 'Berlin', 'Madrid', 'Rome']
-    });
+    const questions = getQuestions();
+    res.render('main/quizgame', { questions });
 });
-
-function readQuizDB() {
-    let data = fs.readFileSync(postDBFileName, "utf-8");
-    return JSON.parse(data);
-}
 
 module.exports = router;

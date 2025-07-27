@@ -1,0 +1,224 @@
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("/fonts/PressStart2P-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: black;
+    color: white;
+    font-family: "Press Start 2P", monospace;
+    user-select: none;
+}
+
+nav {
+    flex: 0 0 auto;
+}
+
+#welcome-screen {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#welcome-box {
+    background: #e0e0e0;
+    color: black;
+    border: 5px solid black;
+    box-shadow: 6px 6px 0 black;
+    padding: 2rem 3rem;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+}
+
+#welcome-box h1 {
+    margin-bottom: 1rem;
+}
+
+#welcome-box p {
+    margin-bottom: 2rem;
+    font-size: 1.3rem;
+}
+
+button,
+.answer {
+    font-family: inherit;
+    font-size: 1.3rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s, color 0.2s;
+    text-align: center;
+}
+
+#welcome-box button,
+#start-btn,
+#next-btn,
+#restart-btn,
+#play-again-btn {
+    background: #e0e0e0;
+    color: black;
+    border: 4px solid black;
+    padding: 0.5rem 1.2rem;
+    box-shadow: 4px 4px 0 black;
+}
+
+#welcome-box button:hover,
+#start-btn:hover,
+#next-btn:hover:not(:disabled),
+#restart-btn:hover,
+#play-again-btn:hover {
+    background: #cfcfcf;
+}
+
+/* 5b) Answer Buttons */
+.answer {
+    background: black;
+    color: #ff9b00;
+    border: 4px solid #ff9b00;
+    padding: 0.7rem 1rem;
+    box-shadow: 4px 4px 0 #ff9b00 inset;
+}
+
+.answer:hover:not(:disabled) {
+    border-color: #ffff38;
+    color: #ffff38;
+    outline: none;
+}
+
+.answer:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.quiz-box {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 60px 70px;
+    flex: 1 0 auto;
+}
+
+.character-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.char-name {
+    font-size: 1.4rem;
+    text-shadow: 1px 1px 0 #000;
+    margin-bottom: 0.4rem;
+}
+
+.health-bar {
+    width: 80%;
+    height: 25px;
+    background: rgb(139, 23, 23);
+    border: 3px solid black;
+    box-shadow: 3px 3px 0 #222 inset;
+    margin-bottom: 0.6rem;
+}
+
+#health-fill {
+    width: 100%;
+    height: 100%;
+    background: yellow;
+    box-shadow: 1px 1px 3px #7f0000 inset;
+    transition: width 0.3s ease;
+}
+
+#timer-box {
+    font-size: 1.4rem;
+    color: yellow;
+    text-shadow: 1px 1px 0 #000;
+    margin-bottom: 1rem;
+}
+
+#question-box {
+    max-width: 100%;
+    width: 100%;
+    margin: 1rem auto;
+    padding: 1.5rem 2rem;
+    border: 5px solid white;
+    box-shadow: 6px 6px 0 #fff inset;
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 1.3;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 2rem;
+    justify-content: center;
+    row-gap: 2rem;
+}
+
+#feedback {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    min-height: 1.4rem;
+}
+
+#result-screen {
+    display: none;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: black;
+}
+
+.result-box {
+    max-width: 600px;
+    width: 90%;
+    padding: 2rem 3rem;
+    border: 5px solid white;
+    box-shadow: 5px 5px 0 white inset;
+    text-align: center;
+}
+
+#result-image {
+    display: block;
+    margin: 0 auto 1rem;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+#result-summary {
+    margin: 1rem 0 2rem;
+    font-size: 1.1rem;
+}
+
+#play-again-btn {
+    background: black;
+    color: white;
+    border: 3px solid white;
+    padding: 0.5rem 1.2rem;
+    box-shadow: 3px 3px 0 white inset;
+}
+
+#play-again-btn:hover {
+    background: white;
+    color: black;
+}
