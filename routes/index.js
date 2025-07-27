@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require("fs");
 const router = express.Router();
 const postDBFileName = "./model/questions.json";
-const { getQuestions } = require('./model/quizQuestions');
+const { getQuestions } = require('../model/quizQuestions');
 
 router.get('/', (req, res) => {
     res.render('main/index');
