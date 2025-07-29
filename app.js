@@ -4,10 +4,21 @@
  const cookieParser = require('cookie-parser');
  const logger = require('morgan');
 
- const indexRouter = require('./routes');
+ require("dotenv").config();
+ const { connectToDB } = require('./model/db.js');
+ const indexRouter = require('./routes/inde
+
 
  const app = express();
 
+ (async () => {
+  try {
+    await connectToDB();
+    console.log('Database initialized');
+  } catch (error) {
+    console.error('Failed to start database:', error);
+  }
+})();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
