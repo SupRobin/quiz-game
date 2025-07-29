@@ -8,6 +8,13 @@ router.get('/', (req, res) => {
     res.render('main/index');
 });
 
+router.get('/signup', (req, res) => {
+    res.render('main/signup');
+});
+
+router.post('/signup/submit' , function(req, res) {
+    console.log(req.body);
+})
 router.post('/quiz/submit' , function(req, res) {
     res.send("Submitting...");
 })
