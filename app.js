@@ -6,7 +6,7 @@
 
  require("dotenv").config();
  const { connectToDB } = require('./model/db.js');
- const indexRouter = require('./routes/inde
+ const indexRouter = require('./routes/index.js');
 
 
  const app = express();
