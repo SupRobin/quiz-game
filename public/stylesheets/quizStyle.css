@@ -5,11 +5,13 @@
     font-style: normal;
 }
 
+
 html {
     height: 100%;
     margin: 0;
     padding: 0;
 }
+
 
 body {
     display: flex;
@@ -23,9 +25,11 @@ body {
     user-select: none;
 }
 
+
 nav {
     flex: 0 0 auto;
 }
+
 
 #welcome-screen {
     flex: 1 0 auto;
@@ -35,6 +39,7 @@ nav {
     margin: 0;
     padding: 0;
 }
+
 
 #welcome-box {
     background: #e0e0e0;
@@ -47,14 +52,17 @@ nav {
     text-align: center;
 }
 
+
 #welcome-box h1 {
     margin-bottom: 1rem;
 }
+
 
 #welcome-box p {
     margin-bottom: 2rem;
     font-size: 1.3rem;
 }
+
 
 button,
 .answer {
@@ -65,6 +73,7 @@ button,
     transition: background-color 0.2s, color 0.2s;
     text-align: center;
 }
+
 
 #welcome-box button,
 #start-btn,
@@ -78,6 +87,7 @@ button,
     box-shadow: 4px 4px 0 black;
 }
 
+
 #welcome-box button:hover,
 #start-btn:hover,
 #next-btn:hover:not(:disabled),
@@ -85,6 +95,7 @@ button,
 #play-again-btn:hover {
     background: #cfcfcf;
 }
+
 
 /* 5b) Answer Buttons */
 .answer {
@@ -95,16 +106,19 @@ button,
     box-shadow: 4px 4px 0 #ff9b00 inset;
 }
 
+
 .answer:hover:not(:disabled) {
     border-color: #ffff38;
     color: #ffff38;
     outline: none;
 }
 
+
 .answer:disabled {
     opacity: 0.5;
     cursor: default;
 }
+
 
 .quiz-box {
     width: 100%;
@@ -114,6 +128,7 @@ button,
     flex: 1 0 auto;
 }
 
+
 .character-box {
     display: flex;
     flex-direction: column;
@@ -121,11 +136,13 @@ button,
     margin-bottom: 1rem;
 }
 
+
 .char-name {
     font-size: 1.4rem;
     text-shadow: 1px 1px 0 #000;
     margin-bottom: 0.4rem;
 }
+
 
 .health-bar {
     width: 80%;
@@ -136,6 +153,7 @@ button,
     margin-bottom: 0.6rem;
 }
 
+
 #health-fill {
     width: 100%;
     height: 100%;
@@ -144,12 +162,14 @@ button,
     transition: width 0.3s ease;
 }
 
+
 #timer-box {
     font-size: 1.4rem;
     color: yellow;
     text-shadow: 1px 1px 0 #000;
     margin-bottom: 1rem;
 }
+
 
 #question-box {
     max-width: 100%;
@@ -163,6 +183,7 @@ button,
     line-height: 1.3;
 }
 
+
 .answers {
     display: grid;
     grid-template-columns: auto auto;
@@ -171,12 +192,14 @@ button,
     row-gap: 2rem;
 }
 
+
 #feedback {
     margin-top: 1rem;
     font-size: 1.3rem;
     font-weight: bold;
     min-height: 1.4rem;
 }
+
 
 #result-screen {
     display: none;
@@ -188,6 +211,7 @@ button,
     background: black;
 }
 
+
 .result-box {
     max-width: 600px;
     width: 90%;
@@ -197,6 +221,7 @@ button,
     text-align: center;
 }
 
+
 #result-image {
     display: block;
     margin: 0 auto 1rem;
@@ -205,10 +230,12 @@ button,
     height: auto;
 }
 
+
 #result-summary {
     margin: 1rem 0 2rem;
     font-size: 1.1rem;
 }
+
 
 #play-again-btn {
     background: black;
@@ -217,6 +244,175 @@ button,
     padding: 0.5rem 1.2rem;
     box-shadow: 3px 3px 0 white inset;
 }
+
+
+#play-again-btn:hover {
+    background: white;
+    color: black;
+}
+.auth-container {
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+.auth-box {
+    background: #e0e0e0;
+    color: black;
+    border: 5px solid black;
+    box-shadow: 6px 6px 0 black;
+    padding: 2rem 3rem;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 0;
+}
+
+
+.tab-btn {
+    font-family: inherit;
+    font-size: 1rem;
+    background: #cfcfcf;
+    color: black;
+    border: 4px solid black;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex: 1;
+}
+
+
+.tab-btn.active {
+    background: #e0e0e0;
+    box-shadow: 4px 4px 0 black inset;
+}
+
+
+.tab-btn:hover:not(.active) {
+    background: #bfbfbf;
+}
+
+
+.tab-btn:first-child {
+    border-right: none;
+}
+
+
+.auth-form {
+    display: none;
+}
+
+
+.auth-form.active {
+    display: block;
+}
+
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: white;
+    color: black;
+    border: 3px solid black;
+    box-shadow: 3px 3px 0 black inset;
+    outline: none;
+    box-sizing: border-box;
+}
+
+
+.form-input:focus {
+    border-color: #ff9b00;
+    box-shadow: 3px 3px 0 #ff9b00 inset;
+}
+
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+
+.checkbox-group input[type="checkbox"] {
+    margin: 0;
+    transform: scale(1.2);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+
+.checkbox-group label {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    margin: 0;
+}
+
+
+.submit-btn {
+    font-family: inherit;
+    font-size: 1.1rem;
+    background: #e0e0e0;
+    color: black;
+    border: 4px solid black;
+    padding: 0.8rem 2rem;
+    box-shadow: 4px 4px 0 black;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+
+.submit-btn:hover {
+    background: #cfcfcf;
+}
+
+
+.form-footer {
+    font-size: 0.7rem;
+    line-height: 1.3;
+    color: #666;
+    margin-top: 1rem;
+}
+
+
+.form-footer a {
+    color: black;
+    text-decoration: underline;
+}
+
+
+.form-footer a:hover {
+    color: #ff9b00;
+}
+
 
 #play-again-btn:hover {
     background: white;
