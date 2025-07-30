@@ -25,6 +25,7 @@ body {
 
 nav {
     flex: 0 0 auto;
+    gap: 1rem;
 }
 
 #welcome-screen {
@@ -222,3 +223,36 @@ button,
     background: white;
     color: black;
 }
+#leaderboard-box {
+    background: #e0e0e0;
+    color: black;
+    border: 5px solid black;
+    box-shadow: 6px 6px 0 black;
+    padding: 2rem 3rem;
+    max-width: 600px;
+    width: 90%;
+    margin: 2rem auto;
+    text-align: center;
+}
+ol.leaderboard {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+}
+ol.leaderboard li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid black;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.7rem;
+    background: black;
+    color: #ff9b00;
+}
+ol.leaderboard li.current-player {
+    border-color: #ffff38;
+    color: #ffff38;
+}
+.rank   { width: 3rem; text-align: left;  }
+.player { flex: 1;     text-align: left;  }
+.score  { width: 6rem; text-align: right; }

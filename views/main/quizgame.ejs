@@ -30,17 +30,22 @@
     </div>
 </div>
 
-<% questions.forEach((q, i) => { %>
-    <template id="q-<%= i %>" data-correct="<%= q.answer %>">
-        <h3><%= i + 1 %>. <%= q.question %></h3>
-        <div class="answers">
-            <% ['A', 'B', 'C', 'D'].forEach(letter => { %>
-                <button class="answer" data-letter="<%= letter %>">
-                    <%= letter %>. <%= q[letter] %>
-                </button>
-            <% }) %>
-        </div>
-    </template>
+<% questions.forEach((q, i) => {
+    const choices = [ q.correct_answer, ...q.incorrect_answers ]
+            .sort(() => Math.random() - 0.5);
+    const letters = ['A','B','C','D'];
+    const correctLetter = letters[choices.indexOf(q.correct_answer)];
+%>
+<template id="q-<%= i %>" data-correct="<%= correctLetter %>">
+    <h3><%= i + 1 %>. <%- q.question %></h3>
+    <div class="answers">
+        <% choices.forEach((choice, idx) => { %>
+            <button class="answer" data-letter="<%= letters[idx] %>">
+                <%= letters[idx] %>. <%= choice %>
+            </button>
+        <% }) %>
+    </div>
+</template>
 <% }) %>
 
 <script src="/scripts/script.js"></script>
