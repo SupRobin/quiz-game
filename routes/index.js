@@ -7,16 +7,13 @@ const { getQuestions } = require('../model/quizQuestions');
 const {getCollection} = require("../model/db.js");
 
 router.get('/', (req, res) => {
-    res.render('main/signin');
+    res.render('main/signinandsignup');
 });
 
 router.get('/index', (req, res) => {
     res.render('main/index');
 });
 
-router.get('/signup', (req, res) => {
-    res.render('main/signup');
-});
 router.post('/signup/submit', async (req, res, next) => {
     const { name, email, password } = req.body;
     console.log('[SIGNUP] incoming:', { name, email });
@@ -29,24 +26,31 @@ router.post('/signup/submit', async (req, res, next) => {
             password: hashedPassword,
         });
         console.log(`[SIGNUP] user created with _id=${insertedId}`);
-
-        //redirect to signin page
-        return res.redirect('/signin');
+        
+        return res.redirect('/');
     } catch (err) {
         console.error('[SIGNUP] error:', err);
         return next(err);
     }
 });
 
-router.get('/signin', (req, res) => {
-    res.render('main/signin');
-});
-
-router.post('/signup/submit', async (req, res, next) => {
-    //verify password, username (email) is correct
-
-    //if it is then redirect user to index
-    return res.redirect('/index');
+router.post('/signin/submit', async (req, res, next) => {
+    const { email, password } = req.body;
+    try {
+        const users = getCollection('users');
+        const user = await users.findOne({ email });
+        
+        if (user && await bcrypt.compare(password, user.password)) {
+            req.session.name = user.name;
+            req.session.userId = user._id;
+            return res.redirect('/index');
+        } else {
+            return res.redirect('/?error=invalid');
+        }
+    } catch (err) {
+        console.error('[SIGNIN] error:', err);
+        return next(err);
+    }
 });
 
 router.get('/quizgame', async (req, res, next) => {
@@ -60,9 +64,9 @@ router.get('/quizgame', async (req, res, next) => {
 router.post('/quizgame/submit', async (req, res, next) => {
     try {
         const leaderboard = getCollection('leaderboard');
-
+        
         await leaderboard.insertOne({
-            name:  req.session.name,
+            name: req.session.name,
             score: req.body.score
         });
         res.sendStatus(204);
@@ -70,34 +74,35 @@ router.post('/quizgame/submit', async (req, res, next) => {
         next(err);
     }
 });
+
 router.get('/leaderboard', async (req, res, next) => {
     try {
         const leaderboard = getCollection('leaderboard');
-
+        
         const top10 = await leaderboard.find()
             .sort({ score: -1 })
             .limit(10)
             .toArray();
-
+        
         let myBest = null, myRank = null;
-
-        // ── check that req.session exists AND has name ──
+        
         if (req.session && req.session.name) {
             myBest = await leaderboard
                 .find({ name: req.session.name })
                 .sort({ score: -1 })
                 .limit(1)
                 .next();
-
+            
             if (myBest) {
                 const better = await leaderboard.countDocuments({ score: { $gt: myBest.score } });
                 myRank = better + 1;
             }
         }
-
+        
         res.render('main/leaderboard', { top10, myBest, myRank });
     } catch (err) {
         next(err);
     }
 });
+
 module.exports = router;
