@@ -115,6 +115,7 @@ router.post('/quizgame/submit', async (req, res, next) => {
         next(err);
     }
 });
+
 router.get('/leaderboard', async (req, res, next) => {
     try {
         const leaderboard = getCollection('leaderboard');

@@ -4,7 +4,7 @@ let current = 0, score = 0, hp = total, timerId;
 const playArea = document.getElementById('play-area');
 const nextBtn = document.getElementById('next-btn');
 const result = document.getElementById('result-box');
-const healthFill= document.getElementById('health-fill');
+const healthFill = document.getElementById('health-fill');
 const hpText = document.getElementById('hp-text');
 const timer = document.getElementById('timer');
 const timerBox = document.getElementById('timer-box');
@@ -42,7 +42,7 @@ function startQuestion() {
 
 function renderQuestion() {
     playArea.innerHTML = '';
-    nextBtn.disabled   = true;
+    nextBtn.disabled = true;
     result.textContent = '';
     if (current >= total) {
         clearTimer();
@@ -56,7 +56,7 @@ function renderQuestion() {
         backgroundMusic.play().catch(err => {console.warn('Autoplay of final song blocked', err);});
         return;
     }
-    const tpl   = document.getElementById(`q-${current}`);
+    const tpl = document.getElementById(`q-${current}`);
     const clone = tpl.content.cloneNode(true);
     playArea.appendChild(clone);
 
@@ -77,7 +77,7 @@ function renderQuestion() {
             }
 
             nextBtn.disabled = false;
-        }, { once: true });
+        }, {once: true});
     });
 }
 
