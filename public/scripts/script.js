@@ -13,6 +13,8 @@ const backgroundTracks = [
     '/music/quiz_music2.mp3',
     '/music/quiz_music3.mp3'
 ];
+const shareContainer = document.getElementById('share-container');
+const shareTwitter   = document.getElementById('share-twitter');
 
 const backgroundMusic = document.getElementById('background-music');
 if (backgroundMusic) {
@@ -54,6 +56,15 @@ function renderQuestion() {
         document.getElementById('score-form').submit();
         backgroundMusic.src  = '/music/quiz_finished.mp3';
         backgroundMusic.play().catch(err => {console.warn('Autoplay of final song blocked', err);});
+        const message = encodeURIComponent(
+            `I scored ${score}/${total} on the Quiz Game!`
+        );
+        shareContainer.style.display = 'block';
+        //share on twitter
+        document.getElementById('share-twitter').onclick = () => {
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${message}`;
+            window.open(twitterUrl, '_blank', 'noopener');
+        };
         return;
     }
     const tpl   = document.getElementById(`q-${current}`);
