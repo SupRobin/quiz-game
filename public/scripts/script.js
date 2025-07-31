@@ -50,7 +50,8 @@ function renderQuestion() {
         playArea.innerHTML = '<h3>Quiz complete!</h3>';
         result.textContent = `Your score: ${score} / ${total}`;
         nextBtn.style.display = 'none';
-
+        document.getElementById('score-input').value = score;
+        document.getElementById('score-form').submit();
         backgroundMusic.src  = '/music/quiz_finished.mp3';
         backgroundMusic.play().catch(err => {console.warn('Autoplay of final song blocked', err);});
         return;

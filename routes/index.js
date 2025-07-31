@@ -75,6 +75,9 @@ router.post('/signin/submit', async (req, res) => {
         }
 
         // 4) success! render their profile (or set a session and redirect)
+        req.session.userId = user._id;
+        req.session.name   = user.name;
+        req.session.score = user.score;
         return res.render('main/profile', {user});
     } catch (err) {
         console.error('[SIGNIN] error:', err);
@@ -102,10 +105,10 @@ router.get('/quizgame', async (req, res, next) => {
 router.post('/quizgame/submit', async (req, res, next) => {
     try {
         const leaderboard = getCollection('leaderboard');
-
+        const score = parseInt(req.body.score, 10);
         await leaderboard.insertOne({
             name: req.session.name,
-            score: req.body.score
+            score
         });
         res.sendStatus(204);
     } catch (err) {

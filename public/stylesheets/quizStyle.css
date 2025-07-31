@@ -256,3 +256,15 @@ ol.leaderboard li.current-player {
 .rank   { width: 3rem; text-align: left;  }
 .player { flex: 1;     text-align: left;  }
 .score  { width: 6rem; text-align: right; }
+
+.profile-card dl dt {
+    float: left;
+    width: 100px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.profile-card dl dd {
+    margin-left: 110px;
+    margin-bottom: .75rem;
+}
