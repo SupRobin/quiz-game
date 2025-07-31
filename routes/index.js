@@ -5,6 +5,8 @@ const bcrypt = require('bcrypt');
 const { getQuestions } = require('../model/quizQuestions');
 const {getCollection} = require("../model/db.js");
 
+let error = ""
+
 router.get('/', (req, res) => {
     res.render('main/signin');
 });
@@ -14,7 +16,7 @@ router.get('/index.html', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-    res.render('main/signup');
+    res.render('main/signup', {error: error});
 });
 
 router.get('/signin', (req, res) => {
@@ -24,9 +26,16 @@ router.get('/signin', (req, res) => {
 router.post('/signup/submit', async (req, res, next) => {
     const { name, email, password } = req.body;
     console.log('[SIGNUP] incoming:', { name, email });
+    error = ""
     try {
         const users = getCollection('users');
         const hashedPassword = await bcrypt.hash(password, 10);
+
+        if(users.findOne({email}) ) {
+            error = "User Already Exists"
+            throw new Error(error)
+        }
+
         const { insertedId } = await users.insertOne({
             name,
             email,
@@ -38,7 +47,7 @@ router.post('/signup/submit', async (req, res, next) => {
         return res.redirect('/signin');
     } catch (err) {
         console.error('[SIGNUP] error:', err);
-        return next(err);
+        return res.redirect('/signup');
     }
 });
 

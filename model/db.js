@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-const dbURL = process.env.ATLAS_URI;
+const dbURL = "mongodb+srv://flaviomduran:QwBYkAQS6pEQdFzU@cluster0.41fwqcn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 let db;
 async function connectToDB() {
