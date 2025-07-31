@@ -16,6 +16,8 @@ router.get('/index', (req, res) => {
     res.render('main/index');
 });
 
+
+
 router.get('/signup', (req, res) => {
     res.render('main/signup', {error: error});
 });
