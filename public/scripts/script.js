@@ -8,6 +8,20 @@ const healthFill= document.getElementById('health-fill');
 const hpText = document.getElementById('hp-text');
 const timer = document.getElementById('timer');
 const timerBox = document.getElementById('timer-box');
+const backgroundTracks = [
+    '/music/quiz_music.mp3',
+    '/music/quiz_music2.mp3',
+    '/music/quiz_music3.mp3'
+];
+
+const backgroundMusic = document.getElementById('background-music');
+if (backgroundMusic) {
+    backgroundMusic.src = backgroundTracks[Math.floor(Math.random() * backgroundTracks.length)];
+    //play music if not blocked
+    backgroundMusic.play().catch(err => {
+        console.warn('Autoplay blocked', err);
+    });
+}
 
 nextBtn.addEventListener('click', () => {
     current++;
@@ -36,6 +50,9 @@ function renderQuestion() {
         playArea.innerHTML = '<h3>Quiz complete!</h3>';
         result.textContent = `Your score: ${score} / ${total}`;
         nextBtn.style.display = 'none';
+
+        backgroundMusic.src  = '/music/quiz_finished.mp3';
+        backgroundMusic.play().catch(err => {console.warn('Autoplay of final song blocked', err);});
         return;
     }
     const tpl   = document.getElementById(`q-${current}`);
