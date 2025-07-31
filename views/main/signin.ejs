@@ -11,6 +11,10 @@
     </head>
     <body>
     <%- include('./header')%>
+    <audio id="background-music" autoplay loop hidden>
+        <source src="music/main_menu.mp3" type="audio/mpeg">
+        Your browser doesn’t support audio.
+    </audio>
         <div class="container">
             <form method="POST" action="/signin/submit" class="signup_form">
                 <div class="form_header">
